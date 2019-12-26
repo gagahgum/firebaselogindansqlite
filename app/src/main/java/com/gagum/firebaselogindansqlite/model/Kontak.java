@@ -3,10 +3,10 @@ package com.gagum.firebaselogindansqlite.model;
 public class Kontak {
     private int no_kontak;
     private String nama;
-    private int nomor;
+    private String nomor;
     private String alamat;
 
-    public Kontak(int no_kontak, String nama, int nomor, String alamat) {
+    public Kontak(int no_kontak, String nama, String nomor, String alamat) {
         this.no_kontak = no_kontak;
         this.nama = nama;
         this.nomor = nomor;
@@ -32,11 +32,11 @@ public class Kontak {
         this.nama = nama;
     }
 
-    public int getNomor() {
+    public String getNomor() {
         return nomor;
     }
 
-    public void setNomor(int nomor) {
+    public void setNomor(String nomor) {
         this.nomor = nomor;
     }
 

@@ -3,6 +3,8 @@ package com.gagum.firebaselogindansqlite.DB;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
 import com.gagum.firebaselogindansqlite.model.Kontak;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 import java.util.ArrayList;
@@ -32,7 +34,7 @@ public class DBHelper extends SQLiteAssetHelper {
             while(!cursor.isAfterLast()){
                 Kontak kontak = new Kontak(cursor.getInt(cursor.getColumnIndex("id_kontak")),
                         cursor.getString(cursor.getColumnIndex("nama")),
-                        cursor.getInt(cursor.getColumnIndex("nomor")),
+                        cursor.getString(cursor.getColumnIndex("nomor")),
                         cursor.getString(cursor.getColumnIndex("alamat")));
                 kontaks.add(kontak);
                 cursor.moveToNext();
@@ -42,4 +44,15 @@ public class DBHelper extends SQLiteAssetHelper {
         db.close();
         return kontaks;
     }
+
+    public void insert(String nama, String nomor ,String alamat) {
+        SQLiteDatabase db = instance.getWritableDatabase();
+        String queryValues = "INSERT INTO " + "kontak" + " (nama, nomor, alamat) " +
+                "VALUES ('" + nama + "', '" + nomor + "', '" + alamat + "')";
+
+        Log.e("insert sqlite ", "" + queryValues);
+        db.execSQL(queryValues);
+        db.close();
+    }
+
 }

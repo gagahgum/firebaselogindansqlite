@@ -35,9 +35,11 @@ public class KontakAdapter extends RecyclerView.Adapter<KontakAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        holder.tvNomor.setText(Integer.toString(kontaks.get(position).getNomor()));
-//        final int id = kategoris.get(position).getNo_kategori();
+        holder.tvNo.setText(Integer.toString(kontaks.get(position).getNo_kontak()));
         holder.tvNama.setText(kontaks.get(position).getNama());
+        holder.tvNomor.setText(kontaks.get(position).getNomor());
+//        final int id = kategoris.get(position).getNo_kategori();
+
 
 //        holder.cardView.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -60,10 +62,12 @@ public class KontakAdapter extends RecyclerView.Adapter<KontakAdapter.MyViewHold
         CardView cardView;
         TextView tvNama;
         TextView tvNomor;
+        TextView tvNo;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.cardview_kontak);
+            tvNo = itemView.findViewById(R.id.tvNo);
             tvNomor = itemView.findViewById(R.id.tvNomor);
             tvNama = itemView.findViewById(R.id.tvNama);
 

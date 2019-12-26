@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView rvKategori;
-    Button logout;
+    Button insert, logout;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +29,25 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
         logout = findViewById(R.id.logout);
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mAuth.signOut();
                 startActivity(new Intent(MainActivity.this, Login.class));
                 finish();
+            }
+        });
+
+        insert = findViewById(R.id.insert);
+        insert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nama = "gacer";
+                String nomor = "081227285827";
+                String alamat = "mantab";
+                DBHelper.getInstance(MainActivity.this).insert(nama,nomor,alamat);
+                startActivity(new Intent(MainActivity.this, MainActivity.class));
             }
         });
         rvKategori = findViewById(R.id.rvKontak);
